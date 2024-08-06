@@ -10,6 +10,11 @@ const App = () => {
       <main>
         <Outlet />
       </main>
+
+      <footer>
+        <div></div>
+        <div>© 2024 Fashion Hive. All rights reserved.</div>
+      </footer>
     </>
   );
 }
