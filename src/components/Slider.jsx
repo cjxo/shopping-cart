@@ -44,7 +44,11 @@ const Slider = ({ displayedProducts }) => {
 
   return (
     <section className="slider">
-      <button className="scroller scroller-left" onClick={handleOnClick}>
+      <button
+        className="scroller scroller-left"
+        onClick={handleOnClick}
+        data-testid="scroll-left-btn"
+      >
         <img src={ScrollerLeftImg} alt="scroll left" />
       </button>
 
@@ -56,7 +60,11 @@ const Slider = ({ displayedProducts }) => {
         }
       </section>
 
-      <button className="scroller scroller-right" onClick={handleOnClick}>
+      <button
+        className="scroller scroller-right"
+        onClick={handleOnClick}
+        data-testid="scroll-right-btn"
+      >
         <img src={ScrollerRightImg} alt="scroll left" />
       </button>
     </section>
@@ -82,3 +90,4 @@ SliderCardProduct.propTypes = {
 }
 
 export default Slider;
+export { SliderCardProduct };

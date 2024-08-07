@@ -1,5 +1,6 @@
 import Slider from "../components/Slider";
 import RightArrowImg from "../assets/icons/arrow-right-thin.svg";
+import PropTypes from 'prop-types';
 
 const testProducts = [
   {
@@ -70,17 +71,51 @@ const HomepageHeader = () => {
   )
 };
 
-const Homepage = () => {
-    return (
-      <section className="homepage-wrapper">
-        <HomepageHeader />
+const SpecialOffers = ({ specialOffers }) => {
+  return (
+    <>
+      <h1 className="homepage-header">
+        Check out today&apos;s <span>Special Offers</span>
+      </h1>
+      <Slider displayedProducts={specialOffers} />
+    </>
+  )
+}
 
-        <h1 className="homepage-header">
-          Check out our <span>Special Offers</span>
-        </h1>
-        <Slider displayedProducts={testProducts} />
-      </section>
-    );
-  }
-  
-  export default Homepage;
+const Testimonials = () => {
+  return (
+    <>
+    </>
+  );
+}
+
+const SubscribeForm = () => {
+  return (
+    <>
+    </>
+  );
+}
+
+const Homepage = () => {
+  return (
+    <section className="homepage-wrapper">
+      <HomepageHeader />
+      <SpecialOffers specialOffers={testProducts} />
+      <Testimonials />
+      <SubscribeForm />
+    </section>
+  );
+}
+
+SpecialOffers.propTypes = {
+  specialOffers: PropTypes.arrayOf(
+    PropTypes.exact({
+      type: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      price: PropTypes.string.isRequired
+    })
+  ).isRequired
+};
+
+
+export default Homepage;
