@@ -276,6 +276,79 @@ input[type="search"]:focus {
   background-color: rgba(230, 230, 230, 1);
 }
 
+.testimonial-header {
+  font-size: 32px;
+  color: var(--orangy-kinda-colour0);
+}
+
+.testimonial-people {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.testimonial-people > li {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+
+  border-radius: 8px;
+  padding: 32px;
+  padding-right: 128px;
+
+  cursor: pointer;
+
+  transition-property: transform background-color;
+  transition-duration: 100ms;
+  transition-timing-function: ease;
+}
+
+.testimonial-people > li:hover, .testimonial-people > li:active {
+  background-color: rgba(250, 250, 250, 1);
+}
+
+.testimonial-people > li:active {
+  transform: scale(0.95);
+}
+
+.testimonial-people > li.selected, .testimonial-people > li:hover {
+  box-shadow: 0px 0px 16px 16px rgba(230, 230, 230, 1);
+}
+
+.testimonial-people > li > div > div:nth-child(1) {
+  font-weight: 500;
+}
+
+.testimonial-people > li > div > div:nth-child(2) {
+  color: rgba(150, 150, 150, 1);
+}
+
+.testimonial-people img {
+  width: 64px;
+  border-radius: 50%;
+}
+
+.testimonial-container {
+  display: flex;
+  gap: 32px;
+}
+
+.testimonial-container p {
+  font-size: 24px;
+  color: hsl(232, 72%, 13%);
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+
+  max-width: 600px;
+}
+
 footer {
   padding: 16px;
   text-align: center;

@@ -1,4 +1,6 @@
 import Slider from "../components/Slider";
+import Testimonials from "../components/Testimonials";
+
 import RightArrowImg from "../assets/icons/arrow-right-thin.svg";
 import PropTypes from 'prop-types';
 
@@ -82,13 +84,6 @@ const SpecialOffers = ({ specialOffers }) => {
   )
 }
 
-const Testimonials = () => {
-  return (
-    <>
-    </>
-  );
-}
-
 const SubscribeForm = () => {
   return (
     <>
@@ -116,6 +111,5 @@ SpecialOffers.propTypes = {
     })
   ).isRequired
 };
-
 
 export default Homepage;
