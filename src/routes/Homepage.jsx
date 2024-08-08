@@ -3,46 +3,47 @@ import Testimonials from "../components/Testimonials";
 
 import RightArrowImg from "../assets/icons/arrow-right-thin.svg";
 import PropTypes from 'prop-types';
+import { useOutletContext } from "react-router-dom";
 
 const testProducts = [
   {
-    type: "Soap",
-    name: "Mint Mild Liquid Soap0",
+    type: "Loading",
+    name: "Loading0",
     price: "$7.95"
   },
   {
-    type: "Soap",
-    name: "Mint Mild Liquid Soap1",
-    price: "$7.95",
-  },
-  {
-    type: "Soap",
-    name: "Mint Mild Liquid Soap2",
+    type: "Loading",
+    name: "Loading1",
     price: "$7.95"
   },
   {
-    type: "Soap",
-    name: "Mint Mild Liquid Soap3",
+    type: "Loading",
+    name: "Loading2",
     price: "$7.95"
   },
   {
-    type: "Soap",
-    name: "Mint Mild Liquid Soap4",
+    type: "Loading",
+    name: "Loading3",
     price: "$7.95"
   },
   {
-    type: "Soap",
-    name: "Mint Mild Liquid Soap5",
+    type: "Loading",
+    name: "Loading4",
     price: "$7.95"
   },
   {
-    type: "Soap",
-    name: "Mint Mild Liquid Soap6",
+    type: "Loading",
+    name: "Loading5",
     price: "$7.95"
   },
   {
-    type: "Soap",
-    name: "Mint Mild Liquid Soap7",
+    type: "Loading",
+    name: "Loading6",
+    price: "$7.95"
+  },
+  {
+    type: "Loading",
+    name: "Loading7",
     price: "$7.95"
   },
 ];
@@ -68,7 +69,7 @@ const HomepageHeader = () => {
         </button>
       </div>
 
-      <div className="image-placeholder">TODO: Actual Image</div>
+      {/*<div className="image-placeholder">TODO: Actual Image</div>*/}
     </header>
   )
 };
@@ -92,10 +93,29 @@ const SubscribeForm = () => {
 }
 
 const Homepage = () => {
+  const displayedProducts = [];
+  const [clothing, , shoes] = useOutletContext();
+  
+  {
+    const c = [...clothing];
+    const s = [...shoes];
+    for (let i = 0; i < 8; ++i) {
+      if ((Math.random() < 0.5) && c.length) {
+        const randIdx = Math.floor(Math.random() * c.length);
+        displayedProducts.push(c.splice(randIdx, 1)[0]);
+      } else {
+        const randIdx = Math.floor(Math.random() * s.length);
+        displayedProducts.push(s.splice(randIdx, 1)[0]);
+      }
+    }
+
+    console.log(displayedProducts);
+  }
+
   return (
     <section className="homepage-wrapper">
       <HomepageHeader />
-      <SpecialOffers specialOffers={testProducts} />
+      <SpecialOffers specialOffers={displayedProducts.length ? displayedProducts : testProducts} />
       <Testimonials />
       <SubscribeForm />
     </section>

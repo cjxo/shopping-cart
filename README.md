@@ -6,11 +6,13 @@ Since this is a shopping cart app, I might need (ADD AS NEEDED):
 
 TODOs
 - [X] Create site nav bar
-- [ ] Design Homepage
+- [X] Design Homepage
   - [X] A scrolling image section above Special Offers Section
   - [X] Special Offers Section
-  - [ ] Testimonials Section
-  - [ ] Subscribe To Fashion Hive Section
+  - [X] Testimonials Section
+  - [X] Acquire pictures for the displayed special items
+  - [X] Loading Screen
+  - [ ] Subscribe To Fashion Hive Section (optional)
 - [ ] Design Shop Page
 - [ ] Desgin Shopping Cart Page
 - [ ] Design About Page

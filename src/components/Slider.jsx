@@ -10,7 +10,17 @@ const SliderCardProduct = ({ product }) => {
       className="slider-card"
     >
       {/* TODO: ACTUAL IMAGE */}
-      <div className="image-placeholder"></div>
+      {/*<div className="image-placeholder"></div>*/}
+      {<img src={product.url}></img>}
+
+      {/*
+      <div
+        className="card-image"
+        style={{
+          backgroundImage: `url(${product.url})`
+        }}
+      >
+      </div>*/}
 
       <div className="displayed-item-type-name-price-container">
         <h4>{product.type}</h4>
@@ -85,7 +95,9 @@ SliderCardProduct.propTypes = {
   product: PropTypes.exact({
     type: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired
+    price: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired
   }).isRequired
 }
 

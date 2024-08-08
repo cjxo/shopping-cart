@@ -53,7 +53,6 @@ nav > .link-list:nth-child(1) {
 
 .welcome-page {
   display: flex;
-  background-color: peachpuff;
   padding: 16px;
 }
 
@@ -179,13 +178,42 @@ input[type="search"]:focus {
   color: var(--orangy-kinda-colour0);
 }
 
+.loading-circle {
+  border: 4px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 4px solid #3498db;
+  width: 120px;
+  height: 120px;
+
+  animation: loading-spin 800ms ease infinite;
+}
+
+.loading-wrapper {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.loading-wrapper > div:nth-child(2) {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+@keyframes loading-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .slider-wrapper {
   display: flex;
   gap: var(--slider-gap);
 
   overflow: hidden;
 
-  height: 370px;
+  height: fit-content;
 
   scroll-behavior: smooth;
 }
@@ -238,15 +266,21 @@ input[type="search"]:focus {
   flex-basis: calc(100% / var(--slider-count) - var(--slider-gap) + var(--slider-gap) / var(--slider-count));
   flex-grow: 1;
   flex-shrink: 0;
-  height: inherit;
 
   background-color: rgba(170, 170, 170, 0.2);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 12px;
   
   padding: 12px;
 
+  border-radius: 8px;
+}
+
+.slider-card > img {
+  margin: auto;
+  max-width: 70%;
   border-radius: 8px;
 }
 
@@ -341,7 +375,7 @@ input[type="search"]:focus {
   font-size: 24px;
   color: hsl(232, 72%, 13%);
 
-  margin-left: auto;
+  margin-left: 128px;
   margin-right: auto;
   margin-top: auto;
   margin-bottom: auto;
@@ -376,6 +410,33 @@ footer > div:first-child {
   :root {
     --slider-count: 3;
   }
+
+  .slider-card > img {
+    max-width: 60%;
+  }
+  
+  .displayed-item-type-name-price-container {
+    font-size: 12px;
+  }
+
+  .testimonial-people {
+    flex-direction: row;
+  }
+
+  .testimonial-container {
+    flex-direction: column;
+  }
+
+  .testimonial-container > p {
+    font-size: 18px;
+    padding: 32px 0px;
+  }
+
+  .testimonial-people > li {
+    flex-grow: 1;
+    flex-direction: column;
+    padding: 30px 24px;
+  }  
 }
 
 @media (max-width: 1000px) {
@@ -395,11 +456,20 @@ footer > div:first-child {
     gap: 16px;
   }
 
+  .displayed-item-type-name-price-container {
+    font-size: 10px;
+  }
+
+
   .nav-left-side {
     gap: 48px;
     justify-content: space-around;
     margin-left: auto; /* WTF? */
     width: 100%;
+  }
+
+  .slider-card > img {
+    max-width: 45%;
   }
 }
 
