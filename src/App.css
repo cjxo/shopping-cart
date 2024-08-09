@@ -82,7 +82,7 @@ nav > .link-list:nth-child(1) {
   text-align: center;
 }
 
-.welcome-page-wrapper > button {
+.welcome-page-wrapper > .explore-now {
   display: flex;
   background-color: var(--orangy-kinda-colour0);
   border: 1px solid  var(--orangy-kinda-colour1);
@@ -99,17 +99,17 @@ nav > .link-list:nth-child(1) {
   transition-timing-function: ease;
 }
 
-.welcome-page-wrapper > button:hover {
+.welcome-page-wrapper > .explore-now:hover {
   background-color: hsl(39, 73%, 57%);
   transform: scale(1.05);
 }
 
-.welcome-page-wrapper > button:active {
+.welcome-page-wrapper > .explore-now:active {
   background-color: var(--orangy-kinda-colour0);
   transform: scale(1);
 }
 
-.welcome-page-wrapper > button > img {
+.welcome-page-wrapper > .explore-now > img {
   width: 32px;
   filter: invert(100%);
 }

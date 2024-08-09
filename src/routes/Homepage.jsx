@@ -3,7 +3,7 @@ import Testimonials from "../components/Testimonials";
 
 import RightArrowImg from "../assets/icons/arrow-right-thin.svg";
 import PropTypes from 'prop-types';
-import { useOutletContext } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 
 const testProducts = [
   {
@@ -63,10 +63,10 @@ const HomepageHeader = () => {
           quality and elegance.
         </p>
 
-        <button type="button">
+        <Link to="/shop" className="explore-now">
           Explore Now
           <img src={RightArrowImg} alt="arrow pointing right" />
-        </button>
+        </Link>
       </div>
 
       {/*<div className="image-placeholder">TODO: Actual Image</div>*/}
