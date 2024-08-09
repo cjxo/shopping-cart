@@ -58,7 +58,7 @@ const Testimonials = () => {
 
   return (
     <>
-      <h1 className="testimonial-header">Testimonials</h1>
+        <h1 className="testimonial-header">Testimonials</h1>
       <section className="testimonial-container">
         <ul className="testimonial-people">
           {

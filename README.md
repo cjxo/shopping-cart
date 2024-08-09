@@ -14,7 +14,7 @@ TODOs
   - [X] Loading Screen
   - [ ] Subscribe To Fashion Hive Section (optional)
 - [ ] Design Shop Page
-  - [ ] "Explore Now" Button redirects to this page
+  - [X] "Explore Now" Button redirects to this page
   - [ ] Think about the design of the page
   - [ ] A category list that when pressed filters the items
   - [ ] An item card that has add to cart button

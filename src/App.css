@@ -22,9 +22,6 @@ nav {
 main {
   padding-left: 48px;
   padding-right: 48px;
-
-  display: flex;
-  justify-content: center;
 }
 
 nav > .link-list:nth-child(1) {
@@ -66,6 +63,8 @@ nav > .link-list:nth-child(1) {
   align-items: center;
   gap: 16px;
 
+  margin-left: auto;
+  margin-right: auto;
   max-width: var(--max-container-size);
 }
 
@@ -167,6 +166,8 @@ input[type="search"]:focus {
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  max-width: var(--max-container-size);
 }
 
 .homepage-header {
@@ -313,6 +314,8 @@ input[type="search"]:focus {
 .testimonial-header {
   font-size: 32px;
   color: var(--orangy-kinda-colour0);
+
+  margin-bottom: 16px;
 }
 
 .testimonial-people {
@@ -383,6 +386,74 @@ input[type="search"]:focus {
   max-width: 600px;
 }
 
+.shoppage-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--max-container-size);
+}
+
+.shoppage-main {
+  display: flex;
+}
+
+.shoppage-main ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.shoppage-main h2 {
+  margin-bottom: 16px;
+}
+
+.shoppage-main ul > li {
+}
+
+.shoppage-main ul > li.selected > button > span {
+  border-left: 4px solid red;
+}
+
+.shoppage-main ul > li.selected > button > span,
+.shoppage-main ul > li > button:hover {
+  transform: scale(1.08) translateX(8px);
+}
+
+.shoppage-main ul > li:not(.selected) > button:hover > span {
+  border-left: 4px solid hsl(7, 69%, 44%);
+}
+
+.shoppage-main ul > li > button:active {
+  transform: scale(1.15) translateX(11px);
+}
+
+.shoppage-main ul > li > button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+
+  padding-right: 16px;
+  font-size: 18px;
+
+  transition-duration: 100ms;
+  transition-timing-function: ease;
+  transition-property: border-left transform;
+}
+
+.shoppage-main ul > li > button > span {
+  border-left: 4px solid rgb(71, 26, 12);
+  margin-right: 12px;
+}
+
+.shoppage-main > section:first-child {
+  flex-grow: 1;
+  border: 1px solid;
+}
+
+.shoppage-main > section:last-child {
+  border: 1px solid;
+  flex-grow: 5;
+}
+
 footer {
   padding: 16px;
   text-align: center;
@@ -430,6 +501,7 @@ footer > div:first-child {
   .testimonial-container > p {
     font-size: 18px;
     padding: 32px 0px;
+    margin-left: auto;
   }
 
   .testimonial-people > li {
