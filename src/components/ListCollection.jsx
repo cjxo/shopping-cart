@@ -12,27 +12,18 @@ const ListCollectionEntry = ({ text, onClick, isSelected }) => {
   )
 }
 
-const ListCollection = () => {
-  const [currentSelected, setCurrentSelected] = useState(0);
-  const entryTexts = ["All", "Clothing", "Jewelery", "Shoes"];
-
-  const onClick = (idx) => {
-    return () => {
-      setCurrentSelected(idx);
-    }
-  };
-
+const ListCollection = ({ textList, selectedCategory, onSelectCategory }) => {
   return (
     <>
       <ul>
         {
-          entryTexts.map((text, idx) => {
+          textList.map((text, idx) => {
             return (
               <ListCollectionEntry
                 key={text}
                 text={text}
-                onClick={onClick(idx)}
-                isSelected={idx === currentSelected}
+                onClick={onSelectCategory(idx)}
+                isSelected={idx === selectedCategory}
               />
             )
           })
@@ -47,6 +38,12 @@ ListCollectionEntry.propTypes = {
   onClick: PropTypes.func.isRequired,
   isSelected: PropTypes.bool.isRequired,
 }
+
+ListCollection.propTypes = {
+  textList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectedCategory: PropTypes.number.isRequired,
+  onSelectCategory: PropTypes.func.isRequired
+};
 
 export default ListCollection;
 export { ListCollectionEntry };

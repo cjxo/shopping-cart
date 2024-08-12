@@ -389,6 +389,7 @@ input[type="search"]:focus {
 .shoppage-wrapper {
   margin-left: auto;
   margin-right: auto;
+  
   max-width: var(--max-container-size);
 }
 
@@ -446,12 +447,82 @@ input[type="search"]:focus {
 
 .shoppage-main > section:first-child {
   flex-grow: 1;
-  border: 1px solid;
 }
 
 .shoppage-main > section:last-child {
   border: 1px solid;
   flex-grow: 5;
+}
+
+/* TODO: Grid Container */
+.displayed-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-items: center;
+  gap: 12px;
+}
+
+.quick-view-card > .image-placeholder {
+}
+
+.quick-view-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 2px solid rgba(200, 200, 200, 1);
+  border-radius: 8px;
+  padding: 16px;
+
+  justify-content: space-between;
+}
+
+.quick-view-card > img {
+  max-width: 128px;
+  margin: auto;
+  border-radius: 8px;
+}
+
+.card-interactable {
+  display: flex;
+  gap: 16px;
+}
+
+.name-and-price > h3 {
+  font-size: 16px;
+}
+
+.card-interactable > button {
+  display: flex;
+  align-items: center;
+  height: fit-content;
+
+  background-color: transparent;
+  border: 1px solid grey;
+  cursor: pointer;
+  
+  background-color: transparent;
+  border-radius: 4px;
+  padding: 8px 12px;
+  
+  transition-property: box-shadow transform;
+  transition-duration: 150ms;
+  transition-timing-function: ease;
+}
+
+.card-interactable > button.added {
+  background-color: rgb(88, 225, 88);
+}
+
+.card-interactable > button:hover {
+  box-shadow: 1px 1px 4px 0px grey;
+}
+
+.card-interactable > button:active {
+  transform: scale(1.05);
+}
+
+.card-interactable > button > img {
+  width: 16px;
 }
 
 footer {
@@ -515,6 +586,7 @@ footer > div:first-child {
   :root {
     --slider-count: 2;
   }
+
   nav {
     display: flex;
     flex-direction: column;
@@ -531,7 +603,6 @@ footer > div:first-child {
   .displayed-item-type-name-price-container {
     font-size: 10px;
   }
-
 
   .nav-left-side {
     gap: 48px;

@@ -65,6 +65,7 @@ const Slider = ({ displayedProducts }) => {
       <section className="slider-wrapper">
         {
           displayedProducts.map((product) => {
+            console.log(product);
             return <SliderCardProduct key={product.name} product={product} />;
           })
         }
@@ -86,7 +87,9 @@ Slider.propTypes = {
     PropTypes.exact({
       type: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      price: PropTypes.string.isRequired
+      price: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired
     })
   ).isRequired
 }

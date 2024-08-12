@@ -78,11 +78,12 @@ const App = () => {
           );
         }
 
+        console.log(result);
         return result;
       };
       setClothing([
         ...mapToBasicProduct(values[0], null, "Clothes"),
-        ...mapToBasicProduct(values[1], 7, "Clothes"),
+        ...mapToBasicProduct(values[1], null, "Clothes"),
         ...mapToBasicProduct(values[2], null, "Clothes")
       ]);
       setJewelery(mapToBasicProduct(values[3], null, "Jewelery"));

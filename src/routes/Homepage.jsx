@@ -99,17 +99,15 @@ const Homepage = () => {
   {
     const c = [...clothing];
     const s = [...shoes];
-    for (let i = 0; i < 8; ++i) {
+    for (let i = 0; (i < 8) && (c.length || s.length); ++i) {
       if ((Math.random() < 0.5) && c.length) {
         const randIdx = Math.floor(Math.random() * c.length);
         displayedProducts.push(c.splice(randIdx, 1)[0]);
-      } else {
+      } else if (s.length) {
         const randIdx = Math.floor(Math.random() * s.length);
         displayedProducts.push(s.splice(randIdx, 1)[0]);
       }
     }
-
-    console.log(displayedProducts);
   }
 
   return (
@@ -123,13 +121,13 @@ const Homepage = () => {
 }
 
 SpecialOffers.propTypes = {
-  specialOffers: PropTypes.arrayOf(
-    PropTypes.exact({
-      type: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      price: PropTypes.string.isRequired
-    })
-  ).isRequired
+  specialOffers: PropTypes.arrayOf(PropTypes.exact({
+    type: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired
+  })).isRequired
 };
 
 export default Homepage;
