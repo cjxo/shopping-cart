@@ -414,7 +414,7 @@ input[type="search"]:focus {
   border-left: 4px solid red;
 }
 
-.shoppage-main ul > li.selected > button > span,
+.shoppage-main ul > li.selected > button,
 .shoppage-main ul > li > button:hover {
   transform: scale(1.08) translateX(8px);
 }
