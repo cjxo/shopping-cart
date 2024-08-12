@@ -7,8 +7,10 @@ import ListCollection from "../components/ListCollection";
 
 import AddToCartImg from "../assets/icons/cart-plus.svg";
 import RemoveToCartImg from "../assets/icons/cart-minus.svg";
+import MinusImg from "../assets/icons/minus.svg";
+import PlusImg from "../assets/icons/plus.svg";
 
-const QuickViewCard = ({ name, price, imgUrl }) => {
+const QuickViewCard = ({ name, price, imgUrl, onProductExpandToggle }) => {
   const [addedToCart, setAddedToCart] = useState(false);
   
   const onAddToCart = () => {
@@ -17,10 +19,18 @@ const QuickViewCard = ({ name, price, imgUrl }) => {
 
   return (
     <div className="quick-view-card">
-      <img src={imgUrl} />
+      <button
+        onClick={onProductExpandToggle}
+      >
+        <img src={imgUrl} className="product-img" />
+      </button>
       <div className="card-interactable">
         <div className="name-and-price">
-          <h3>{name}</h3>
+          <button
+            onClick={onProductExpandToggle}
+          >
+            <h3>{name}</h3>
+          </button>
           <p>{price}</p>
         </div>
         <button
@@ -38,9 +48,97 @@ const QuickViewCard = ({ name, price, imgUrl }) => {
   )
 };
 
+const IncreaseDecreaseInput = () => {
+  const [number, setNumber] = useState(1);
+
+  const decrement = () => {
+    if (number > 1) {
+      setNumber(number - 1);
+    }  
+  };
+
+  const increment = () => {
+    setNumber(number + 1);
+  };
+
+  const onInput = (e) => {
+    setNumber(parseInt(e.target.value));
+  }
+
+  const onFocusLost = (e) => {
+    console.log(e.target.value)
+    if ((number < 1) || (e.target.value.length === 0)) {
+      setNumber(1);
+    }
+  }
+
+  return (
+    <div className="increase-decrease-container">
+      <button
+        className="decrease"
+        onClick={decrement}
+      >
+        <img src={MinusImg} />
+      </button>
+      <input
+        type="number"
+        value={number}
+        onInput={onInput}
+        onBlur={onFocusLost}
+      />
+      <button
+        className="increase"
+        onClick={increment}
+      >
+        <img src={PlusImg} />
+      </button>
+    </div>
+  );
+};
+
+const DisplayedProductExpanded = ({ productToExpand, onCloseExpandedProduct }) => {
+  return (
+    <>
+      <section className="displayed-product-expanded">
+        <button
+          className="go-back-btn"
+          onClick={onCloseExpandedProduct}
+        >
+          Go Back
+        </button>
+        <div className="displayed-product">
+          <img src={productToExpand.url} />
+          <div className="product-details">          
+            <div>
+              <h2>
+                {productToExpand.name}
+              </h2>
+              <p>
+                {productToExpand.description}
+              </p>
+            </div>
+
+            <div>
+              <h2 className="price">{productToExpand.price}</h2>
+              <div className="add-to-shopping-cart-interface">
+                <IncreaseDecreaseInput />
+                <button className="add-to-cart-btn">
+                  <span>Add To Cart</span>
+                  <img src={AddToCartImg} />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  )
+};
+
 const ShopPage = () => {
   const [clothing, jewelery, shoes] = useOutletContext();
   const [selectedCategory, setSelectedCategory] = useState(0);
+  const [productToExpand, setProductToExpand] = useState(null);
   const entryTexts = ["All", "Clothing", "Jewelery", "Shoes"];
   
   const onSelectCategory = (idx) => {
@@ -49,15 +147,25 @@ const ShopPage = () => {
     };
   };
 
+  const onProductExpandToggle = (productToExpand) => {
+    return () => {
+      setProductToExpand(productToExpand);
+    };
+  };
+
+  const onCloseExpandedProduct = () => {
+    setProductToExpand(null);
+  };
+
   const quickViewCardMapper = (array) => {
     return array.map(item => {
-      console.log("Hi")
       return (
         <QuickViewCard
           key={item.name}
           name={item.name}
           price={item.price}
           imgUrl={item.url}
+          onProductExpandToggle={onProductExpandToggle(item)}
         />
       )
     });
@@ -77,19 +185,28 @@ const ShopPage = () => {
             />
           </section>
 
-          <section className="displayed-items">
-            {
-              (selectedCategory === 0) ? (
-                quickViewCardMapper([...clothing, ...jewelery, ...shoes])
-              ) : (selectedCategory === 1) ? (
-                quickViewCardMapper(clothing)
-              ) : (selectedCategory === 2) ? (
-                quickViewCardMapper(jewelery)
-              ) : (
-                quickViewCardMapper(shoes)
-              )
-            }
-          </section>
+          {
+            (productToExpand === null) ? (
+              <section className="displayed-items">
+              {
+                (selectedCategory === 0) ? (
+                  quickViewCardMapper([...clothing, ...jewelery, ...shoes])
+                ) : (selectedCategory === 1) ? (
+                  quickViewCardMapper(clothing)
+                ) : (selectedCategory === 2) ? (
+                  quickViewCardMapper(jewelery)
+                ) : (
+                  quickViewCardMapper(shoes)
+                )
+              }
+              </section>
+            ) : (
+              <DisplayedProductExpanded
+                productToExpand={productToExpand}
+                onCloseExpandedProduct={onCloseExpandedProduct}
+              />
+            )
+          }
         </section>
       </section>
     </>
@@ -99,7 +216,19 @@ const ShopPage = () => {
 QuickViewCard.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
-  imgUrl: PropTypes.string.isRequired
+  imgUrl: PropTypes.string.isRequired,
+  onProductExpandToggle: PropTypes.func.isRequired
+}
+
+DisplayedProductExpanded.propTypes = {
+  productToExpand: PropTypes.exact({
+    type: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired
+  }).isRequired,
+  onCloseExpandedProduct: PropTypes.func.isRequired
 }
 
 export default ShopPage;

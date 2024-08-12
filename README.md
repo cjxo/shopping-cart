@@ -19,8 +19,10 @@ TODOs
   - [X] A category list that when pressed filters the items
   - [X] An item card that has add to cart button
   - [ ] When the item is clicked, expand that into a page
-    - [ ] Display complete details in its object
-    - [ ] Of course, an add to cart button in the expaded page
+    - [X] Display complete details in its object
+    - [X] Of course, an add to cart button in the expaded page
+    - [ ] A state that determines whether the product is added to the shopping cart
+      - [ ] This means we need a structure that stores the state of the shopping cart and what products contain it.
 - [ ] Desgin Shopping Cart Page
 - [ ] Actually implement search bar functionality
 - [ ] Design About Page (Or just dont do it. its optional)
