@@ -6,12 +6,12 @@ import PlusImg from "../assets/icons/plus.svg";
 const IncreaseDecreaseInput = ({ number, setNumber }) => {
   const decrement = () => {
     if (number > 1) {
-      setNumber(number - 1);
+      setNumber(n => n - 1);
     }  
   };
 
   const increment = () => {
-    setNumber(number + 1);
+    setNumber(n => n + 1);
   };
 
   const onInput = (e) => {
