@@ -85,13 +85,6 @@ const SpecialOffers = ({ specialOffers }) => {
   )
 }
 
-const SubscribeForm = () => {
-  return (
-    <>
-    </>
-  );
-}
-
 const Homepage = () => {
   const displayedProducts = [];
   const [clothing, , shoes] = useOutletContext();
@@ -115,7 +108,6 @@ const Homepage = () => {
       <HomepageHeader />
       <SpecialOffers specialOffers={displayedProducts.length ? displayedProducts : testProducts} />
       <Testimonials />
-      <SubscribeForm />
     </section>
   );
 }
