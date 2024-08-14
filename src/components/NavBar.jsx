@@ -16,7 +16,7 @@ const NavBar = () => {
 
         <div className="nav-right-side">
           <form>
-            <input type="search" placeholder="Search..." />
+            <input type="search" className="main-search-bar" placeholder="Search..." />
             <button type="submit"></button>
           </form>
           <ul className="link-list">

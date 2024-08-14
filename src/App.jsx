@@ -103,13 +103,13 @@ const App = () => {
 
   const cart = (() => {
     const exists = (product) => {
-      return cartState.find((entry) => {
+      const result = cartState.find((entry) => {
         return entry.product === product;
       }) !== undefined;
+      return result;
     };
 
     const setQty = (product, quantity) => {
-      console.log(cartState);
       setCartState((prevState) => {
         const found = cartState.find((entry) => {
           return entry.product === product;
@@ -141,7 +141,11 @@ const App = () => {
       });
     };
 
-    return { exists, setQty, remove };
+    const state = () => {
+      return cartState;
+    };
+
+    return { exists, setQty, remove, state };
   })();
 
 

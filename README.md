@@ -21,8 +21,10 @@ TODOs
   - [ ] When the item is clicked, expand that into a page
     - [X] Display complete details in its object
     - [X] Of course, an add to cart button in the expaded page
-    - [ ] A state that determines whether the product is added to the shopping cart
-      - [ ] This means we need a structure that stores the state of the shopping cart and what products contain it.
+    - [X] A state that determines whether the product is added to the shopping cart
+      - [X] This means we need a structure that stores the state of the shopping cart and what products contain it.
+    - [ ] Shopping cart interface for expanded view of product
 - [ ] Desgin Shopping Cart Page
+  - [ ] Think about design
 - [ ] Actually implement search bar functionality
 - [ ] Design About Page (Or just dont do it. its optional)

@@ -31,9 +31,15 @@ const ShopPage = () => {
 
   const quickViewCardMapper = (array) => {
     const addToCart = (item) => {
-      return () => {
-        cart.setQty(item, 1);
-      };
+      if (cart.exists(item)) {
+        return () => {
+          cart.remove(item);
+        };
+      } else {
+        return () => {
+          cart.setQty(item, 1);
+        };
+      }
     };
 
     return array.map((item, idx) => {
