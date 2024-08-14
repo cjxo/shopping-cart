@@ -115,7 +115,21 @@ const ShoppingCart = () => {
 };
 
 CartEntryCard.propTypes = {
-  
+  cart: PropTypes.exact({
+    exists: PropTypes.func,
+    setQty: PropTypes.func,
+    remove: PropTypes.func,
+  }).isRequired,
+  cartEntry: PropTypes.exact({
+    product: PropTypes.exact({
+      type: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      price: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired
+    }).isRequired,
+    quantity: PropTypes.number.isRequired
+  })
 };
 
 export default ShoppingCart;
