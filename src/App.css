@@ -114,6 +114,7 @@ nav > .link-list:nth-child(1) {
 }
 
 .page-title {
+  margin-bottom: 16px;
   color: var(--orangy-kinda-colour0);
 }
 
@@ -815,6 +816,7 @@ footer > div:first-child {
 
 .cart-contents {
   border-bottom: 2px solid grey;
+  padding-top: 16px;
 }
 
 .subtotal > button:hover, .subtotal > button:active {
@@ -861,7 +863,22 @@ footer > div:first-child {
     flex-grow: 1;
     flex-direction: column;
     padding: 30px 24px;
-  }  
+  }
+
+  .cart-entry {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .cart-quick-view {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .subtotal {
+    align-self: center;
+  }
 }
 
 @media (max-width: 1000px) {
@@ -880,6 +897,10 @@ footer > div:first-child {
     flex-direction: column;
     
     gap: 16px;
+  }
+  
+  .page-title {
+    text-align: center;
   }
 
   .displayed-item-type-name-price-container {
