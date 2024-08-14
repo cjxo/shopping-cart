@@ -5,7 +5,6 @@ import App from './App.jsx';
 import ErrorPage from './routes/ErrorPage.jsx';
 import ShopPage from './routes/ShopPage.jsx';
 import Homepage from './routes/Homepage.jsx';
-import AboutPage from './routes/AboutPage.jsx';
 
 import './index.css';
 import {
@@ -28,10 +27,6 @@ const router = createBrowserRouter(
         {
           path: "shop/",
           element: <ShopPage />
-        },
-        {
-          path: "about/",
-          element: <AboutPage />
         },
         {
           path: "shopping-cart/",
