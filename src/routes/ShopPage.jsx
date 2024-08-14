@@ -5,8 +5,10 @@ import ListCollection from "../components/ListCollection";
 import QuickViewCard from "../components/QuickViewCard";
 import DisplayedProductExpanded from "../components/DisplayedProductExpanded";
 
+import { testProducts } from "../components/test-products";
+
 const ShopPage = () => {
-  const [clothing, jewelery, shoes] = useOutletContext();
+  const [clothing, jewelery, shoes, cart] = useOutletContext();
   const [selectedCategory, setSelectedCategory] = useState(0);
   const [productToExpand, setProductToExpand] = useState(null);
   const entryTexts = ["All", "Clothing", "Jewelery", "Shoes"];
@@ -28,14 +30,22 @@ const ShopPage = () => {
   };
 
   const quickViewCardMapper = (array) => {
-    return array.map(item => {
+    const addToCart = (item) => {
+      return () => {
+        cart.setQty(item, 1);
+      };
+    };
+
+    return array.map((item, idx) => {
       return (
         <QuickViewCard
-          key={item.name}
+          key={item.name + `${idx}`}
           name={item.name}
           price={item.price}
           imgUrl={item.url}
           onProductExpandToggle={onProductExpandToggle(item)}
+          addedToCart={cart.exists(item)}
+          addToCart={addToCart(item)}
         />
       )
     });
@@ -60,7 +70,11 @@ const ShopPage = () => {
               <section className="displayed-items">
               {
                 (selectedCategory === 0) ? (
-                  quickViewCardMapper([...clothing, ...jewelery, ...shoes])
+                  ((clothing.length || jewelery.length || shoes.length)) ? (
+                    quickViewCardMapper([...clothing, ...jewelery, ...shoes])
+                  ) : (
+                    quickViewCardMapper([...testProducts])
+                  )
                 ) : (selectedCategory === 1) ? (
                   quickViewCardMapper(clothing)
                 ) : (selectedCategory === 2) ? (

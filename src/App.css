@@ -570,7 +570,7 @@ footer > div:first-child {
 }
 
 .displayed-product > img {
-  max-width: 400px;
+  max-height: 400px;
   padding: 32px;
 }
 

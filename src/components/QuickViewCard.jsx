@@ -1,18 +1,10 @@
 
-import { useState } from "react";
-
 import AddToCartImg from "../assets/icons/cart-plus.svg";
 import RemoveToCartImg from "../assets/icons/cart-minus.svg";
 
 import PropTypes from "prop-types";
 
-const QuickViewCard = ({ name, price, imgUrl, onProductExpandToggle }) => {
-  const [addedToCart, setAddedToCart] = useState(false);
-  
-  const onAddToCart = () => {
-    setAddedToCart(!addedToCart);
-  };
-
+const QuickViewCard = ({ name, price, imgUrl, onProductExpandToggle, addedToCart, addToCart }) => {
   return (
     <div className="quick-view-card">
       <button
@@ -31,7 +23,7 @@ const QuickViewCard = ({ name, price, imgUrl, onProductExpandToggle }) => {
         </div>
         <button
           className={addedToCart ? "added" : ""}
-          onClick={onAddToCart}
+          onClick={addToCart}
         >
           <img
             src={addedToCart ? RemoveToCartImg : AddToCartImg}
@@ -48,7 +40,9 @@ QuickViewCard.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   imgUrl: PropTypes.string.isRequired,
-  onProductExpandToggle: PropTypes.func.isRequired
+  onProductExpandToggle: PropTypes.func.isRequired,
+  addedToCart: PropTypes.bool.isRequired,
+  addToCart: PropTypes.func.isRequired
 }
 
 export default QuickViewCard;

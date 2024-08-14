@@ -5,48 +5,7 @@ import RightArrowImg from "../assets/icons/arrow-right-thin.svg";
 import PropTypes from 'prop-types';
 import { Link, useOutletContext } from "react-router-dom";
 
-const testProducts = [
-  {
-    type: "Loading",
-    name: "Loading0",
-    price: "$7.95"
-  },
-  {
-    type: "Loading",
-    name: "Loading1",
-    price: "$7.95"
-  },
-  {
-    type: "Loading",
-    name: "Loading2",
-    price: "$7.95"
-  },
-  {
-    type: "Loading",
-    name: "Loading3",
-    price: "$7.95"
-  },
-  {
-    type: "Loading",
-    name: "Loading4",
-    price: "$7.95"
-  },
-  {
-    type: "Loading",
-    name: "Loading5",
-    price: "$7.95"
-  },
-  {
-    type: "Loading",
-    name: "Loading6",
-    price: "$7.95"
-  },
-  {
-    type: "Loading",
-    name: "Loading7",
-    price: "$7.95"
-  },
-];
+import { testProducts } from "../components/test-products";
 
 const HomepageHeader = () => {
   return (
@@ -89,7 +48,7 @@ const Homepage = () => {
   const displayedProducts = [];
   const [clothing, , shoes] = useOutletContext();
   
-  {
+  if ((clothing.length > 0) && (shoes.length > 0)) {
     const c = [...clothing];
     const s = [...shoes];
     for (let i = 0; (i < 8) && (c.length || s.length); ++i) {
@@ -101,6 +60,8 @@ const Homepage = () => {
         displayedProducts.push(s.splice(randIdx, 1)[0]);
       }
     }
+  } else {
+    displayedProducts.push(...testProducts);
   }
 
   return (

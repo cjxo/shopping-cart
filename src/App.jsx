@@ -47,11 +47,11 @@ const LoadingScreen = () => {
 }
 
 const App = () => {
+  const [cartState, setCartState] = useState([]);
   const [clothing, setClothing] = useState([]);
   const [shoes, setShoes] = useState([]);
   const [jewelery, setJewelery] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  isLoading;
 
   useEffect(() => {
     Promise.all([
@@ -101,6 +101,50 @@ const App = () => {
       .then(json=>console.log(json));*/
   }, []);
 
+  const cart = (() => {
+    const exists = (product) => {
+      return cartState.find((entry) => {
+        return entry.product === product;
+      }) !== undefined;
+    };
+
+    const setQty = (product, quantity) => {
+      console.log(cartState);
+      setCartState((prevState) => {
+        const found = cartState.find((entry) => {
+          return entry.product === product;
+        });
+  
+        if (found) {
+          return prevState.map(entry => 
+            (entry.product === product)
+            ? { ...entry, quantity }
+            : entry
+          );
+        } else {
+          return [...prevState, { product, quantity }];
+        }
+      });
+    }
+  
+    const remove = (product) => {
+      setCartState((prevState) => {
+        const idx = cartState.findIndex((entry) => {
+          return entry.product === product;
+        });
+    
+        if (idx !== -1) {
+          return prevState.filter((_, index) => index !== idx);
+        } else {
+          return prevState;
+        }
+      });
+    };
+
+    return { exists, setQty, remove };
+  })();
+
+
   return (
     <>
       {
@@ -112,7 +156,7 @@ const App = () => {
           <>
             <NavBar />
             <main>
-              <Outlet context={[clothing, jewelery, shoes]} />
+              <Outlet context={[clothing, jewelery, shoes, cart]} />
             </main>
 
             <footer>
