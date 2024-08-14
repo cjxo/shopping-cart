@@ -1,6 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import PropTypes from "prop-types";
 import IncreaseDecreaseInput from "../components/IncreaseDecreaseInput";
+import { useState } from "react";
 
 const CartEntryCard = ({ cart, cartEntry }) => {
   const { product, quantity } = cartEntry;
@@ -45,8 +46,18 @@ const CartEntryCard = ({ cart, cartEntry }) => {
 };
 
 const ShoppingCart = () => {
+  const [searchVal, setSearchVal] = useState("");
   const [,,,cart] = useOutletContext();
   console.log(cart.state());
+
+  const filteredProducts = cart.state().filter((entry) => {
+    return entry.product.name.toLowerCase().includes(searchVal.toLowerCase());
+  });
+
+  const onSearch = (e) => {
+    setSearchVal(e.target.value);
+  };
+
   return (
     <>
       <section className="shopping-cart-wrapper">
@@ -57,12 +68,14 @@ const ShoppingCart = () => {
             type="search"
             placeholder="Search For Product in Cart"
             className="cart-search-product"
+            value={searchVal}
+            onInput={onSearch}
           />
         </header>
 
         <div className="cart-contents">
           {
-            cart.state().map((entry, idx) => {
+            filteredProducts.map((entry, idx) => {
               return (
                 <CartEntryCard
                   key={entry.product.name + `${idx}`}
