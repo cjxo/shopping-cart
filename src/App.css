@@ -907,6 +907,15 @@ footer > div:first-child {
     font-size: 10px;
   }
 
+  .shoppage-main {  
+    flex-direction: column;
+  }
+  
+  .shoppage-main ul {
+    display: flex;
+    justify-content: center;
+  }
+
   .nav-left-side {
     gap: 48px;
     justify-content: space-around;

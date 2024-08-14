@@ -73,7 +73,6 @@ const ShopPage = () => {
         <h1 className="page-title">Shop</h1>
         <section className="shoppage-main">
           <section>
-            <h2>Collection</h2>
             <ListCollection
               textList={entryTexts}
               selectedCategory={selectedCategory}
