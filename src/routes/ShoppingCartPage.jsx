@@ -116,6 +116,7 @@ const ShoppingCart = () => {
 
 CartEntryCard.propTypes = {
   cart: PropTypes.exact({
+    find: PropTypes.func,
     exists: PropTypes.func,
     setQty: PropTypes.func,
     remove: PropTypes.func,

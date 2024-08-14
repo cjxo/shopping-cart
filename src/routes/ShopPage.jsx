@@ -57,6 +57,16 @@ const ShopPage = () => {
     });
   };
 
+  const expandedAddToCart = (qty) => {
+    return () => {
+      return cart.setQty(productToExpand, qty);
+    }
+  };
+
+  const expandedRemoveFromCart = () => {
+    cart.remove(productToExpand);
+  };
+
   return (
     <>
       <section className="shoppage-wrapper">
@@ -92,6 +102,9 @@ const ShopPage = () => {
               </section>
             ) : (
               <DisplayedProductExpanded
+                addToCart={expandedAddToCart}
+                removeFromCart={expandedRemoveFromCart}
+                wasAddedToCart={cart.exists(productToExpand)}
                 productToExpand={productToExpand}
                 onCloseExpandedProduct={onCloseExpandedProduct}
               />

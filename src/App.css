@@ -521,7 +521,7 @@ input[type="search"]:focus {
 }
 
 .card-interactable > button.added {
-  background-color: rgb(88, 225, 88);
+  background-color: hsl(120, 51%, 54%);
 }
 
 .card-interactable > button:hover {

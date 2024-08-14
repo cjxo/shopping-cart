@@ -102,11 +102,15 @@ const App = () => {
   }, []);
 
   const cart = (() => {
-    const exists = (product) => {
+    const find = (product) => {
       const result = cartState.find((entry) => {
         return entry.product === product;
-      }) !== undefined;
+      });
       return result;
+    };
+
+    const exists = (product) => {
+      return find(product) !== undefined;
     };
 
     const setQty = (product, quantity) => {
@@ -145,7 +149,7 @@ const App = () => {
       return cartState;
     };
 
-    return { exists, setQty, remove, state };
+    return { find, exists, setQty, remove, state };
   })();
 
 
