@@ -14,9 +14,9 @@ const NavBar = () => {
         </div>
 
         <div className="nav-right-side">
-          <form>
+          <form onSubmit={(e) => { e.preventDefault() }}>
             <input type="search" className="main-search-bar" placeholder="Search..." />
-            <button type="submit"></button>
+            <button type="submit" className="search"></button>
           </form>
           <ul className="link-list">
             <li>

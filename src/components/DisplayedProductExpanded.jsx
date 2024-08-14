@@ -66,6 +66,7 @@ const DisplayedProductExpanded = ({ addToCart, removeFromCart, wasAddedToCart, p
 
 DisplayedProductExpanded.propTypes = {
   addToCart: PropTypes.func.isRequired,
+  removeFromCart: PropTypes.func.isRequired,
   wasAddedToCart: PropTypes.bool.isRequired,
   productToExpand: PropTypes.exact({
     type: PropTypes.string.isRequired,

@@ -70,7 +70,7 @@ const ShopPage = () => {
   return (
     <>
       <section className="shoppage-wrapper">
-        <h1>Shop</h1>
+        <h1 className="page-title">Shop</h1>
         <section className="shoppage-main">
           <section>
             <h2>Collection</h2>

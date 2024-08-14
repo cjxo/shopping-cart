@@ -23,8 +23,7 @@ TODOs
     - [X] Of course, an add to cart button in the expaded page
     - [X] A state that determines whether the product is added to the shopping cart
       - [X] This means we need a structure that stores the state of the shopping cart and what products contain it.
-    - [ ] Shopping cart interface for expanded view of product
+    - [X] Shopping cart interface for expanded view of product
 - [X] Desgin Shopping Cart Page
   - [X] Think about design
 - [ ] Actually implement search bar functionality
-- [ ] Design About Page (Or just dont do it. its optional)
