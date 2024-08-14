@@ -286,7 +286,7 @@ input[type="search"]:focus {
 
 .slider-card > img {
   margin: auto;
-  max-width: 164px;
+  max-width: 70%;
   border-radius: 8px;
 }
 
@@ -838,7 +838,7 @@ footer > div:first-child {
   }
 
   .slider-card > img {
-    max-width: 128px;
+    max-width: 55%;
   }
   
   .displayed-item-type-name-price-container {
@@ -924,7 +924,7 @@ footer > div:first-child {
   }
 
   .slider-card > img {
-    max-width: 96px;
+    max-width: 40%;
   }
 }
 
