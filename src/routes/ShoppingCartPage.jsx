@@ -38,7 +38,7 @@ const CartEntryCard = ({ cart, cartEntry }) => {
       </div>
       <div className="cart-price-display">
         <h3>
-          {parseFloat(product.price.substring(1)) * quantity}
+          {`$${parseFloat(product.price.substring(1)) * quantity}`}
         </h3>
       </div>
     </div>
