@@ -38,7 +38,7 @@ const CartEntryCard = ({ cart, cartEntry }) => {
       </div>
       <div className="cart-price-display">
         <h3>
-          {product.price}
+          {parseFloat(product.price.substring(1)) * quantity}
         </h3>
       </div>
     </div>
@@ -98,7 +98,7 @@ const ShoppingCart = () => {
                 $${cart.state().reduce(
                   (acc, curr) => {
                     console.log(curr);
-                    return acc + parseFloat(curr.product.price.substring(1))
+                    return acc + parseFloat(curr.product.price.substring(1)) * curr.quantity
                   }, 0)}`
               }
             </h3>
