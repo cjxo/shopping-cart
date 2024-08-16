@@ -2,7 +2,11 @@
 import "./App.css";
 import { Outlet } from 'react-router-dom';
 import NavBar from './components/NavBar';
-import { useEffect, useState } from "react";
+import {
+  useEffect,
+  useState,
+  useMemo,
+} from "react";
 
 async function loadProduct(url) {
   try {
@@ -101,7 +105,7 @@ const App = () => {
       .then(json=>console.log(json));*/
   }, []);
 
-  const cart = (() => {
+  const cart = useMemo(() => {
     const find = (product) => {
       const result = cartState.find((entry) => {
         return entry.product === product;
@@ -148,11 +152,9 @@ const App = () => {
     const state = () => {
       return cartState;
     };
-
     return { find, exists, setQty, remove, state };
-  })();
-
-
+  }, [cartState]);
+  
   return (
     <>
       {

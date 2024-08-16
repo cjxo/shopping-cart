@@ -38,7 +38,7 @@ const CartEntryCard = ({ cart, cartEntry }) => {
       </div>
       <div className="cart-price-display">
         <h3>
-          {`$${parseFloat(product.price.substring(1)) * quantity}`}
+          {`$${(parseFloat(product.price.substring(1)) * quantity).toFixed(2)}`}
         </h3>
       </div>
     </div>
@@ -99,7 +99,7 @@ const ShoppingCart = () => {
                   (acc, curr) => {
                     console.log(curr);
                     return acc + parseFloat(curr.product.price.substring(1)) * curr.quantity
-                  }, 0)}`
+                  }, 0).toFixed(2)}`
               }
             </h3>
           </div>
